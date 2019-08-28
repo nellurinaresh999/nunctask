@@ -1,0 +1,71 @@
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.example {
+  padding: 20px;
+  color: white;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+   img{border:5px solid red;}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+   img{border:5px solid green;}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  img{border:5px solid blue;}
+} 
+
+
+</style>
+
+    <script src="wheel-zoom.js"></script>
+</head>
+<body>
+    
+    <div>
+        <a href="javascript:;" id="zoom_up">Zoom-In</a> &nbsp;&nbsp;<a href="javascript:;" id="zoom_down">Zoom-Out</a>
+    </div>    
+   
+    <div style="width:600px;height:600px;">
+        <img src="flower.jpg" />
+    </div>
+	
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            jcWheelZoom = JcWheelZoom.create('img', {
+                prepare: function (scale, correct_x, correct_y) {
+                    // do smth when image prepared
+                },
+                rescale: function (scale, correct_x, correct_y, min_scale) {
+                    // do smth when image rescaled
+                }
+            });
+           
+            window.addEventListener('resize', function () {
+                jcWheelZoom.prepare();
+            });
+            
+            document.getElementById('zoom_up').addEventListener('click', function () {
+                jcWheelZoom.zoomUp();
+            });
+            
+            document.getElementById('zoom_down').addEventListener('click', function () {
+                jcWheelZoom.zoomDown();
+            });
+        });
+		
+		
+    </script>
+</body>
+</html>
